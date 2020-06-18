@@ -17,16 +17,12 @@ var db *sql.DB
 var err error
 
 // Init is ..
-func Init() {
-	connStr := "postgres://itsme:enter@127.0.0.1:5432/gorest_db?sslmode=disable"
+func Init() *sql.DB {
+	connStr := "user=itsme password=enter dbname=gorest_db sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 
 	if err = db.Ping(); err != nil {
 		log.Fatal(err)
 	}
-}
-
-// CreateConn is ..
-func CreateConn() *sql.DB {
 	return db
 }
